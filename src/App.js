@@ -1,9 +1,9 @@
 import 'bootstrap/dist/css/bootstrap.css'
-import Data from './components/homework2/Data';
+import Axios from './components/homework4/Axios';
 
 function App() {
   return (
-    <Data/>
+    <Axios/>
   );
 }
 
