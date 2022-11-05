@@ -3,20 +3,26 @@ import {useState, useEffect, useCallback} from 'react'
 
 function Axios(){
     const url = "https://jsonplaceholder.typicode.com/posts";
-    const [posts, updatePost] = useState();
+    const [posts, updatePosts] = useState();
     const [index, change] = useState(1);
     const [post, getValue] = useState(null);
 
+
+
     useEffect(() => {
-        axios.get(url + '/' + index).then((response) => {
+        async function getOneRow(){
+            const response = await axios.get(url + '/' + index);
             getValue(response.data);
-          });
+        }
+        getOneRow();
     }, [index]);
 
     const LoadPosts = useCallback(()=> {
-        axios.get(url).then((response) => {
-            updatePost(response.data);
-          });
+        async function getAllData(){
+            const response = await axios.get(url);
+            updatePosts(response.data);
+        }
+        getAllData();
       },[])
 
     const handleAction = (event) => {
