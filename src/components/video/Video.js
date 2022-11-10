@@ -1,7 +1,6 @@
 import {useState} from 'react';
-import React from 'react'
-import Data from 'homework/Data';
-import ReactPlayer from 'react-player'
+import React from 'react';
+import ReactPlayer from 'react-player';
 
 
 function Video(){
@@ -19,10 +18,9 @@ function Video(){
     
     return (
         <div className="container centered">
-            <Data data={videos}/>
             <div className="row">
-                <div className='col-8'>
-                    <ReactPlayer url={videos[playThisIndexedVideo].url} playing={videoCondition}/>
+                <div className='col-12'>
+                    <ReactPlayer url={videos[playThisIndexedVideo].url} playing={videoCondition} controls={true}/>
                 </div>
                 <div className='col-4'>
                     <ul className="list-group">

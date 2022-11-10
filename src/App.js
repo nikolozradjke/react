@@ -1,9 +1,9 @@
 import 'bootstrap/dist/css/bootstrap.css'
-import Axios from './components/homework4/Axios';
+import Styled from './components/lesson6/Styled';
 
 function App() {
   return (
-    <Axios/>
+    <Styled/>
   );
 }
 
