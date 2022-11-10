@@ -3,7 +3,7 @@ import styled from 'styled-components';
 const Container = styled.div`
     background-color: rgb(24, 23, 23);
     height: fit-content;
-    width: fit-content;
+    margin-right: 55%;
     padding: 25px 25px;
 `
 
@@ -24,6 +24,7 @@ const ChannelName = styled.p`
 
 const SubscriberCounter = styled.p`
     color: #aaa;
+    display: inline-block;
     font-size: 10px;
     font-weight: 600;
 `
@@ -37,6 +38,7 @@ const SubscribeButton = styled.button`
     font-weight: 600;
     color: #646665;
     border-radius: 48px;
+    cursor: pointer;
     transition: 0.5;
     &:hover {
         opacity: 0.5;
@@ -55,6 +57,7 @@ const LikeButton = styled.button`
     height: 40px;
     width: 100px;
     color: white;
+    cursor: pointer;
     border-radius: 20px 0px 0px 20px;
     transition: 0.3s;
     &:hover {
@@ -69,6 +72,7 @@ const DislikeButton = styled.button`
     height: 40px;
     width: 40px;
     color:white;
+    cursor: pointer;
     border-radius: 0px 20px 20px 0px;
     transition: 0.3s;
     &:hover {
@@ -82,6 +86,7 @@ const ShareButton = styled.button`
     height: 40px;
     width: 140px;
     color: white;
+    cursor: pointer;
     border-radius: 20px;
     transition: 0.3s;
     &:hover {
