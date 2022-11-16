@@ -1,8 +1,8 @@
-import Styled from './components/lesson6/Styled';
+import Main from './components/shualeduri/Main';
 
 function App() {
   return (
-    <Styled/>
+    <Main/>
   );
 }
 
