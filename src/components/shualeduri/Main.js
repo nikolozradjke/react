@@ -8,41 +8,50 @@ import Item from './Item';
 import {Container, Filter, Label, PriceDash, SearchButton, Items} from './Styles';
 
 function Main(){
-    const [brand, getBrandId] = useState(null);
-    const [type, getTypeId] = useState(0);
-    const [priceFrom, getFromPrice] = useState(null);
-    const [priceTo, getToPrice] = useState(null);
+    const [sendableParams, setSendableParams] = useState({
+        TypeID: 0,
+        Mans: null,
+        PriceFrom: null,
+        PriceTo: null,
+        CurrencyID: 1
+    });
     const [items, getValue] = useState([]);
 
     const getBrand = brand => {
-        getBrandId(brand);
+        setSendableParams(prevState => ({
+            ...prevState,
+            Mans:brand
+        }));
     }
 
     const getType = type => {
-        getTypeId(type);
+        setSendableParams(prevState => ({
+            ...prevState,
+            TypeID: type
+        }));
     }
 
-    const getPriceFrom = priceFrom => {
-        getFromPrice(priceFrom);
+    const getPriceFrom = price => {
+        setSendableParams(prevState => ({
+            ...prevState,
+            PriceFrom: price
+        }));
     }
 
-    const getPriceTo = priceTo => {
-        getToPrice(priceTo);
+    const getPriceTo = toPrice => {
+        setSendableParams(prevState => ({
+            ...prevState,
+            PriceTo: toPrice
+        }));
     }
 
     const LoadItems = useCallback(()=> {
         try{
-            async function getOneRow(){
-                const response = await axios.get('https://api2.myauto.ge/ka/products', { params: { 
-                    TypeID: type,
-                    Mans:brand,
-                    PriceFrom: priceFrom,
-                    PriceTo: priceTo,
-                    CurrencyID: 1
-                }});
+            async function getResponse(){
+                const response = await axios.get('https://api2.myauto.ge/ka/products', { params: sendableParams});
                 getValue(response.data.data.items);
             }
-            getOneRow();
+            getResponse();
         }catch(error){
             if (error.response.status < 200 || error.response.status >= 300) {
                 console.log('Try again later');
