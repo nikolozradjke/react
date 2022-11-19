@@ -16,12 +16,14 @@ function Main(){
         CurrencyID: 1
     });
     const [items, getValue] = useState([]);
+    const [requestable, ToggleRequestable] = useState(false)
 
     const getBrand = brand => {
         setSendableParams(prevState => ({
             ...prevState,
             Mans:brand
         }));
+        ToggleRequestable(true)
     }
 
     const getType = type => {
@@ -29,6 +31,7 @@ function Main(){
             ...prevState,
             TypeID: type
         }));
+        ToggleRequestable(true)
     }
 
     const getPriceFrom = price => {
@@ -36,6 +39,7 @@ function Main(){
             ...prevState,
             PriceFrom: price
         }));
+        ToggleRequestable(true)
     }
 
     const getPriceTo = toPrice => {
@@ -43,6 +47,7 @@ function Main(){
             ...prevState,
             PriceTo: toPrice
         }));
+        ToggleRequestable(true)
     }
 
     const LoadItems = useCallback(()=> {
@@ -70,7 +75,7 @@ function Main(){
                 <PriceFrom getPriceFrom={getPriceFrom}></PriceFrom>
                 <PriceDash>-</PriceDash>
                 <PriceTo getPriceTo={getPriceTo}></PriceTo>
-                <SearchButton onClick={LoadItems}>მოძებნე</SearchButton>
+                <SearchButton disabled={!requestable} onClick={LoadItems}>მოძებნე</SearchButton>
             </Filter>
             <Items>
                 {items && items.map((item, index) => (
